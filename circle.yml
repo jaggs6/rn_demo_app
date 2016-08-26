@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: 6.3.1
+
+dependencies:
+  post:
+    - cd android && ./gradlew app:dependencies
+
+test:
+  override:
+    - cd android && ./gradlew app:assembleRelease
+
+  post:
+    - cp ./app/build/outputs/apk/app-release.apk $CIRCLE_ARTIFACTS
